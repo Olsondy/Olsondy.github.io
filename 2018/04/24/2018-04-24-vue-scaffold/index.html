@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vuejs" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一个使用vuejs搭建的项目脚手架">
+<meta name="keywords" content="vuejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-scaffold">
+<meta property="og:url" content="https://olsondy.github.io/2018/04/24/2018-04-24-vue-scaffold/index.html">
+<meta property="og:site_name" content="Olsond&#39;s Blog">
+<meta property="og:description" content="一个使用vuejs搭建的项目脚手架">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img.shields.io/node/v/webpack.svg">
+<meta property="og:image" content="https://img.shields.io/badge/npm-3.8.9-blue.svg">
+<meta property="og:image" content="https://img.shields.io/badge/webpack-2.6.1-blue.svg">
+<meta property="og:image" content="https://img.shields.io/badge/vue-2.4.2-brightgreen.svg">
+<meta property="og:image" content="https://img.shields.io/badge/vuex-2.3.1-brightgreen.svg">
+<meta property="og:image" content="https://img.shields.io/badge/vue--router-2.5.3-brightgreen.svg">
+<meta property="og:image" content="https://img.shields.io/travis/rust-lang/rust.svg">
+<meta property="og:image" content="https://img.shields.io/badge/element--ui-1.4.3-brightgreen.svg">
+<meta property="og:image" content="http://img.shields.io/npm/dm/element-ui.svg">
+<meta property="og:image" content="https://img.shields.io/badge/iview-2.3-brightgreen.svg">
+<meta property="og:image" content="http://img.shields.io/npm/dm/iview.svg">
+<meta property="og:image" content="https://img.shields.io/badge/axios-0.16.2-brightgreen.svg">
+<meta property="og:image" content="https://img.shields.io/badge/vue--i18n-5.0x-brightgreen.svg">
+<meta property="og:updated_time" content="2018-04-25T07:31:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-scaffold">
+<meta name="twitter:description" content="一个使用vuejs搭建的项目脚手架">
+<meta name="twitter:image" content="https://img.shields.io/node/v/webpack.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://olsondy.github.io/2018/04/24/2018-04-24-vue-scaffold/"/>
+
+
+
+
+
+  <title>vue-scaffold | Olsond's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Olsond's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Try to be alive</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://olsondy.github.io/2018/04/24/2018-04-24-vue-scaffold/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Olsond">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/anime.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Olsond's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue-scaffold</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T00:00:00+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/develop/" itemprop="url" rel="index">
+                    <span itemprop="name">develop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  一个使用vuejs搭建的项目脚手架
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="SPA应用-？"><a href="#SPA应用-？" class="headerlink" title="SPA应用 ？"></a>SPA应用 ？</h2><ul>
+<li><p>SPA应用的概念</p>
+<blockquote>
+<ul>
+<li>SPA (Signle Page Application) 整个webapp就一个html文件，里面的各个功能页面是javascript通过hash,或者history api来进行路由，并通过ajax拉取数据来实现响应功能。因为整个webapp就一个html，所以叫单页面！</li>
+</ul>
+</blockquote>
+</li>
+<li><p>优势</p>
+<blockquote>
+<ul>
+<li>前后端职责分离，架构清晰：前端进行交互逻辑，后端负责数据处理。</li>
+<li>前后端单独开发、单独测试。</li>
+<li>良好的交互体验，前端进行的是局部渲染。避免了不必要的跳转和重复渲染</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>Authority Management System (权限管理系统)</p>
+<p><a href="https://github.com/nodejs/node" target="_blank" rel="noopener"><img src="https://img.shields.io/node/v/webpack.svg" alt="node"></a><br><a href="https://github.com/npm/npm" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/npm-3.8.9-blue.svg" alt="npm"></a><br><a href="https://github.com/webpack/webpack" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/webpack-2.6.1-blue.svg" alt="webpack"></a><br><a href="https://github.com/vuejs/vue" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/vue-2.4.2-brightgreen.svg" alt="vue"></a><br><a href="https://github.com/vuejs/vuex" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/vuex-2.3.1-brightgreen.svg" alt="vuex"></a><br><a href="https://github.com/vuejs/vue-router" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/vue--router-2.5.3-brightgreen.svg" alt="vue-router"></a><br><a href=""><img src="https://img.shields.io/travis/rust-lang/rust.svg" alt="Travis"></a></p>
+<ul>
+<li>本项目使用的是vue-cli 脚手架生成的基于webpace的单页应用<a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">vue-cli 脚手架</a></li>
+<li>开发工具<ul>
+<li>规定使用<code>webstorm 2017.2 + eslint + babel</code></li>
+</ul>
+</li>
+<li>简要规范<ul>
+<li>使用 ES6/ES2015 来编写代码。</li>
+<li><code>npm install</code> 成功后,在<code>webstorm</code>中设置<code>eslint</code>环境,遵守当前项目的<code>eslint</code>规范</li>
+<li>按钮统一使用<code>iview UI</code>的<code>&lt;Button&gt;</code>组件</li>
+<li>表单统一使用<code>iview UI</code>的表单组件</li>
+<li>表格统一使用<code>element UI</code>的<code>&lt;el-table&gt;</code></li>
+<li>开发界面独立样式在组件中<code>style</code>标签下新增</li>
+<li>菜单<code>.vue</code>组件一定要放在<code>view</code>目录下,否则会导致路由加载不到页面的错误.</li>
+<li>业务异常的提示弹出不需要自己写,只需要写异常之后需要处理的业务.</li>
+<li>操作成功的提示弹出层统一使用<code>element UI</code>的<code>message</code>组件. </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>如组件页面有其他UI组件的需求,则需要和前端UI进行沟通</p>
+</blockquote>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><p> 基于Chrome内核的现代浏览器和Internet Explorer 10+</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li style="list-style: none"><input type="checkbox" checked> 布局(菜单、头部、导航、内容)</li>
+<li style="list-style: none"><input type="checkbox" checked> 路由导航,动态侧边栏（支持多级路由）</li>
+<li style="list-style: none"><input type="checkbox" checked> 查询表单的自适应,分页表格功能</li>
+<li style="list-style: none"><input type="checkbox" checked> 表单 (选择组件、可搜索选择组件)</li>
+<li style="list-style: none"><input type="checkbox" checked> http请求封装(get post put delete)</li>
+<li style="list-style: none"><input type="checkbox" checked> store 状态数据存储</li>
+<li style="list-style: none"><input type="checkbox" checked> mock数据</li>
+<li style="list-style: none"><input type="checkbox" checked> http请求的国际化</li>
+<li style="list-style: none"><input type="checkbox" checked> 与后台交互增删改查的例子</li>
+<li style="list-style: none"><input type="checkbox" checked> 多环境发布</li>
+<li style="list-style: none"><input type="checkbox" checked> 按钮权限设计</li>
+<li style="list-style: none"><input type="checkbox" checked> 多语言、换肤切换</li>
+</ul>
+<h2 id="目录结构介绍"><a href="#目录结构介绍" class="headerlink" title="目录结构介绍"></a>目录结构介绍</h2><pre><code>|-- build                            // webpack配置文件
+|-- config                           // 项目打包运行环境配置
+|-- src                              // 源码目录
+|   |-- assets                       // 内部使用资源目录
+|   |-- common                       // 所有系统可以公用的功能模块
+|       |-- api                      // http请求方法
+|       |-- components               // 公共通用组件
+|       |-- main                     // 首页布局模板
+|       |-- mock                     // mockjs模拟请求
+|       |-- plugins                  // 插件目录
+|       |-- router                   // 路由配置
+|       |-- styles                   // 通用css样式
+|       |-- stores                   // 状态管理数据存储
+|       |-- utils                    // 工具函数
+|   |-- components                   // 当前项目单独通用组件组件
+|   |-- views                        // 当前项目页面模块
+|   |-- App.vue                      // 页面入口文件
+|   |-- main.js                      // 程序入口文件，加载各种公共组件
+|-- static                           // 外部引入静态文件目录
+|-- test                             // 单元测试目录
+|
+|    ....
+|
+|-- .babelrc                         // babel-loader语法编译配置
+|-- .editorconfig                    // 代码编写规格
+|-- .eslintignore                    // 需要忽略js语法及代码风格的配置
+|-- .eslintrc.js                     // 检查js语法错误及代码风格
+|-- .gitignore                       // git提交忽略的文件
+├── leo-face.ico                     // favicon图标
+|-- .npmrc                           // npm install 工具包配置
+|-- index.html                       // 入口html文件
+|-- package.json                     // 项目及工具的依赖配置文件
+|-- README.md                        // 说明
+</code></pre><p>!&gt; <strong>注意</strong> 开发时请按照上面目录结构描述进行开发.</p>
+<h2 id="安装及启动"><a href="#安装及启动" class="headerlink" title="安装及启动"></a>安装及启动</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>// 下载到本地
+git clone http://code.hoau.net/itiaoling-sc/leo-face.git &amp;&amp; cd leo-face
+//设置npm安装地址注册到淘宝镜像的地址
+npm config set registry https://registry.npm.taobao.org
+// 安装项目依赖
+npm i
+</code></pre><blockquote>
+<ul>
+<li>如果是node-sass的错误,安装cnpm,使用cnpm执行以下命令<ul>
+<li>npm i cnpm -g</li>
+<li>cnpm i node-sass</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="本地开发"><a href="#本地开发" class="headerlink" title="本地开发"></a>本地开发</h3><pre><code>// 开启服务器，浏览器访问 http://localhost:8089
+npm run dev
+</code></pre><h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><pre><code>// 执行构建命令，生成的dist文件夹放在服务器下即可访问
+// 生成webpack-bundle-analyzer的code split图
+npm run build:test
+</code></pre><h3 id="生产环境"><a href="#生产环境" class="headerlink" title="生产环境"></a>生产环境</h3><pre><code>// 执行构建命令，生成的dist文件夹放在服务器下即可访问
+npm run build:prod
+</code></pre><h2 id="相关组件说明与简单例子演示"><a href="#相关组件说明与简单例子演示" class="headerlink" title="相关组件说明与简单例子演示"></a>相关组件说明与简单例子演示</h2><h3 id="Element-amp-iView"><a href="#Element-amp-iView" class="headerlink" title="Element &amp; iView"></a>Element &amp; iView</h3><p>基于vue2.x封装的网站快速成型工具包</p>
+<blockquote>
+<p>项目已经在<code>main.js</code>中引入了相关依赖,在组件中直接按照官方例子使用即可,如需在js中单独使用,请使用<code>import</code>按需引入</p>
+</blockquote>
+<p><strong>相关地址</strong></p>
+<ul>
+<li><p><a href="https://github.com/ElemeFE/element" target="_blank" rel="noopener">Element</a> ,<a href="http://element.eleme.io/#/zh-CN" target="_blank" rel="noopener">官方教程</a></p><p></p><br><a href="https://github.com/ElemeFE/element" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/element--ui-1.4.3-brightgreen.svg" alt="version"></a><br><a href="https://github.com/ElemeFE/element" target="_blank" rel="noopener"><img src="http://img.shields.io/npm/dm/element-ui.svg" alt="downloads"></a><p></p>
+</li>
+<li><p><a href="https://github.com/iview/iview/" target="_blank" rel="noopener">iView</a>,<a href="https://www.iviewui.com" target="_blank" rel="noopener">官方教程</a></p><p></p><br><a href="https://github.com/iview/iview/" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/iview-2.3-brightgreen.svg" alt="version"></a><br><a href="https://github.com/iview/iview/" target="_blank" rel="noopener"><img src="http://img.shields.io/npm/dm/iview.svg" alt="downloads"></a><p></p>
+</li>
+</ul>
+<p>!&gt; <strong>注意</strong></p>
+<ul>
+<li>leo-face 脚手架使用了俩个ui组件库的组件.组件内部使用互不影响,但可能某些情况下会出现css样式冲突</li>
+</ul>
+<h3 id="mock-js-框架的使用"><a href="#mock-js-框架的使用" class="headerlink" title="mock.js 框架的使用"></a>mock.js 框架的使用</h3><p>拦截并模拟 ajax 请求</p>
+<blockquote>
+<p>项目使用了mock.js模拟，在无后台环境前可使用展示界面,需使用后端api，可在main.js移除</p>
+<pre><code>import &apos;common/mock/index.js&apos;; // 模拟http数据请求  (注释则可以调用本地配置的开发环境)
+</code></pre></blockquote>
+<p><strong>相关地址</strong></p>
+<ul>
+<li><a href="https://github.com/nuysoft/Mock/wiki/Getting-Started" target="_blank" rel="noopener">官方wiki</a></li>
+<li><a href="http://cnodejs.org/topic/53f718218f44dfa3511af923" target="_blank" rel="noopener">简易教程</a></li>
+</ul>
+<p><strong>使用</strong></p>
+<ul>
+<li>文件位置<code>common/mock/index.js</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试接口覆盖</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'mockjs'</span>;</span><br><span class="line"><span class="keyword">import</span> mockAPI <span class="keyword">from</span> <span class="string">'./response'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明需要拦截的地址请求,</span></span><br><span class="line"><span class="comment">// 参数说明</span></span><br><span class="line"><span class="comment">// restful接口</span></span><br><span class="line"><span class="comment">// http method</span></span><br><span class="line"><span class="comment">// 执行请求方法</span></span><br><span class="line"><span class="comment">// 前俩个参数需与拦截的请求一致方可拦截成功</span></span><br><span class="line">Mock.mock(<span class="regexp">/\/users\/v1\/actions\/login/</span>,<span class="string">'post'</span>,mockAPI.login);</span><br></pre></td></tr></table></figure>
+<h3 id="http请求-axios框架使用"><a href="#http请求-axios框架使用" class="headerlink" title="http请求 axios框架使用"></a>http请求 axios框架使用</h3><p><strong>基于http客户端的promise，面向浏览器和nodejs</strong></p>
+<p><a href="https://github.com/mzabriskie/axios" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/axios-0.16.2-brightgreen.svg" alt="axios"></a></p>
+<blockquote>
+<ul>
+<li>vue更新到2.0之后，就宣告不再对vue-resource更新，而是推荐的axios</li>
+<li>将当前的http请求方法绑定在vm对象中,可直接使用例如<code>vm.$get()</code></li>
+</ul>
+</blockquote>
+<p><strong>相关地址</strong></p>
+<ul>
+<li><a href="https://github.com/mzabriskie/axios" target="_blank" rel="noopener">源码地址</a></li>
+<li><a href="https://segmentfault.com/a/1190000008470355" target="_blank" rel="noopener">中文翻译文档</a></li>
+</ul>
+<p><strong>使用</strong></p>
+<ul>
+<li><p>文件位置<code>common/api/http.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get请求</span></span><br><span class="line">http.get(getUrl, params).then(<span class="function"><span class="params">data</span> =&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//post or put请求  请求url、请求json对象、请求方法</span></span><br><span class="line">http.mergePostAndPut(reqUrl, params,reqMethod).then(<span class="function"><span class="params">data</span> =&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line">		<span class="comment">//delete 请求</span></span><br><span class="line">http.delete(delUrl).then(<span class="function"><span class="params">data</span> =&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//获取用户信息</span></span><br><span class="line"> http.get(<span class="string">'/users/v1/current'</span>).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (data)&#123;</span><br><span class="line">        <span class="keyword">const</span> user = data.result;</span><br><span class="line">        <span class="keyword">if</span> (user)&#123;</span><br><span class="line">          commit(<span class="string">'SET_NAME'</span>, user.userChineseName);</span><br><span class="line">          commit(<span class="string">'SET_CODE'</span>, user.userCode);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> Message(&#123;</span><br><span class="line">            message: <span class="string">'获取用户信息失败'</span>,</span><br><span class="line">            type: <span class="string">'error'</span>,</span><br><span class="line">            showClose: <span class="literal">true</span>,</span><br><span class="line">            duration: <span class="number">2</span> * <span class="number">1000</span></span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="comment">//异常需要处理的流程</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>提示: 在目录<code>common/utils/fetch.js</code>中封装了axios的httpRequest和httpResponse相关promise hook</p>
+</blockquote>
+<h3 id="vuex-状态管理"><a href="#vuex-状态管理" class="headerlink" title="vuex 状态管理"></a>vuex 状态管理</h3><p>应用的数据与状态存储</p>
+<blockquote>
+<ul>
+<li><code>main.js</code>已经全局导入声明了vuex</li>
+<li>项目中只有user和app配置相关状态使用vuex存在全局，其它数据都由每个业务页面自己管理。</li>
+</ul>
+</blockquote>
+<p><strong>相关地址</strong></p>
+<ul>
+<li><a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">vuex</a></li>
+<li><a href="https://vuex.vuejs.org/zh-cn/actions.html" target="_blank" rel="noopener">Actions</a></li>
+</ul>
+<p><strong>实例介绍</strong></p>
+<ul>
+<li><p>目录结构<code>src/common</code></p>
+<pre><code>|-- stores                               //stores目录
+|   |-- module                           //模块
+|       |-- app.js                       //当前应用使用的数据存储对象及操作
+|       |-- permission.js                //整个系统路由的数据存储对象及操作
+|           |-- user.js                      // 左侧菜单路由渲染组件
+|   |-- getters.js                       // vuex对象属性全局获取的对象
+|   |-- index.js                         // vuex对象声明创建
+</code></pre></li>
+<li>组件中使用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在vue的computed属性中使用Es6数组扩展运算符加载getters对象</span></span><br><span class="line">computed: &#123;</span><br><span class="line">	 ...mapGetters([</span><br><span class="line">	 <span class="string">'permission_routers'</span>,</span><br><span class="line">	 <span class="string">'sidebar'</span></span><br><span class="line">	 ]),</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//组件中使用</span></span><br><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">'toggleSideBar'</span>)  <span class="comment">//vue当前组件对象中使用</span></span><br><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">'SET_LANG'</span>,e);  <span class="comment">//提交数据存储到vuex对象</span></span><br><span class="line"><span class="comment">//javascript中使用</span></span><br><span class="line">store.dipatch(<span class="string">'login'</span>)   <span class="comment">//import依赖后使用对象调用,转发到actions相应方法</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="vue-router-路由"><a href="#vue-router-路由" class="headerlink" title="vue-router 路由"></a>vue-router 路由</h3><p>使用vue-router实现的动态路由导航</p>
+<blockquote>
+<p>项目中根据权限的数据生成的vue-router对象,达到动态路由的目的渲染菜单和页面</p>
+</blockquote>
+<p><strong>相关地址</strong></p>
+<ul>
+<li><a href="https://router.vuejs.org/zh-cn/advanced/navigation-guards.html" target="_blank" rel="noopener">router导航</a></li>
+<li><a href="https://router.vuejs.org/zh-cn/api/route-object.html" target="_blank" rel="noopener">router导航信息配置</a></li>
+</ul>
+<p><strong>实例介绍</strong></p>
+<ul>
+<li><p>目录结构<code>src/common</code></p>
+<pre><code>|-- router                               
+|   |-- _import_components.js             //懒加载配置
+|   |-- dynamicRouter.js                  // 动态导航钩子
+|   |-- index.js                          // router实例
+</code></pre></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'common/router'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'common/router/dynamicRouter'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//router/index</span></span><br><span class="line"><span class="comment">//创建路由</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  mode:<span class="string">'history'</span>,</span><br><span class="line">  base: <span class="string">'/leo-face/'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//router/dynamicRouter.js</span></span><br><span class="line"><span class="comment">//设置当前系统的默认路由导航</span></span><br><span class="line"><span class="keyword">const</span> constantRouterMap = [&#123;</span><br><span class="line">  path: <span class="string">'/'</span>,</span><br><span class="line">  name: <span class="string">''</span>,</span><br><span class="line">  component: LeoLayout,</span><br><span class="line">  redirect: <span class="string">'/main'</span>,</span><br><span class="line">  hidden: <span class="literal">true</span>,</span><br><span class="line">  children: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/main'</span>,</span><br><span class="line">      component: homepage,</span><br><span class="line">      name:<span class="string">'首页'</span>,</span><br><span class="line">      beforeEnter: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">        store.dispatch(<span class="string">'addVisitedViews'</span>,to);  <span class="comment">//首页标签页的初始化</span></span><br><span class="line">        next();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">//导航拦截,用来完成跳转</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;&#125;);</span><br><span class="line"><span class="comment">//完成导航</span></span><br><span class="line">router.afterEach(<span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>项目的主体框架布局</p>
+<p><strong>介绍</strong></p>
+<ul>
+<li><p>目录结构<code>src/common</code></p>
+<pre><code>|  -- main                              // 首页目录
+|    |-- Layout.vue                    // 主组件
+|    |-- Siderbar.vue                  // 左侧菜单面板组件
+|    |-- SiderbarItem.vue              // 左侧菜单路由渲染组件
+|    |-- Navbar.vue                    // 头部组件
+|    |-- TabsView.vue                  // 基于tags的标签页组件(后续修改为tabs)
+|    |-- AppMain.vue                   // 右侧内容布局组件
+</code></pre></li>
+<li><p>布局概述</p>
+<ul>
+<li>Layout：布局容器，其下可嵌套 Navbar Siderbar AppMain 或 Layout 本身，可以放在任何父容器中。</li>
+<li>Navbar：顶部布局，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。</li>
+<li>Siderbar：左侧菜单面板组件，只能放在 Layout 中。</li>
+<li>SiderbarItem：左侧菜单路由渲染组件,只能放在 Siderbar 中。</li>
+<li>AppMain：内容部分，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。</li>
+</ul>
+</li>
+</ul>
+<h3 id="内容页"><a href="#内容页" class="headerlink" title="内容页"></a>内容页</h3><ul>
+<li>表单,表格的一致风格<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"app-container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"filter-container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Form</span> <span class="attr">:label-width</span>=<span class="string">"80"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-6 col-md-6 col-lg-3"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Form-item</span> <span class="attr">label</span>=<span class="string">"系统编码"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">static-selector</span> <span class="attr">:params</span>=<span class="string">"codeSelector"</span> <span class="attr">ref</span>=<span class="string">"staticSelector"</span>&gt;</span><span class="tag">&lt;/<span class="name">static-selector</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">Form-item</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-container"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>以上是右侧内容布局的写法,使用<code>bootstrap</code>自适应的栅格布局,<code>&lt;div class=&quot;col-sm-6 col-md-6 col-lg-3&quot;&gt;</code></p>
+</blockquote>
+<h3 id="Selector-下拉组件"><a href="#Selector-下拉组件" class="headerlink" title="Selector 下拉组件"></a>Selector 下拉组件</h3><p><strong>以<code>ChildSystemSetting.vue</code>组件使用为例</strong></p>
+<ul>
+<li><p>可选择selector <code>StaticSelector.vue</code></p>
+<ul>
+<li><p>在父组件中使用</p>
+<ul>
+<li><p><code>template</code></p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">"4"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">Form-item</span> <span class="attr">label</span>=<span class="string">"系统编码"</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">static-selector</span> <span class="attr">:params</span>=<span class="string">"codeSelector"</span> <span class="attr">ref</span>=<span class="string">"staticSelector"</span>&gt;</span><span class="tag">&lt;/<span class="name">static-selector</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">Form-item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>script</code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data () &#123;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">   nameSelector: &#123;</span><br><span class="line">     selectAt: <span class="string">'all'</span>,     <span class="comment">//设置默认值</span></span><br><span class="line">     emptyText: <span class="string">'选择系统编码'</span>,  <span class="comment">//设置默认文本提示,默认值是:'请选择'</span></span><br><span class="line">     remoteUrl: <span class="string">'/sub-systems/v1/display'</span> <span class="comment">//获取数据的url</span></span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>动态搜索selector <code>DynamicSelector.vue</code></p>
+<ul>
+<li><p>在父组件中使用</p>
+<ul>
+<li><p><code>template</code></p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">"4"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Form-item</span> <span class="attr">label</span>=<span class="string">"系统名称"</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">dynamic-selector</span> <span class="attr">:params</span>=<span class="string">"nameSelector"</span> <span class="attr">ref</span>=<span class="string">"dynamicSelector"</span>&gt;</span><span class="tag">&lt;/<span class="name">dynamic-selector</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">Form-item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>script</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data () &#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		nameSelector: &#123;</span><br><span class="line">			emptyText: <span class="string">'搜索系统名称'</span>,  <span class="comment">//设置默认文本提示,默认值是:'请选择'</span></span><br><span class="line">			remoteUrl: <span class="string">'/sub-systems/v1/systemName'</span> <span class="comment">//获取数据的url</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>说明:</p>
+<ul>
+<li><code>:params</code>自定义属性,该属性封装了父组件传递给子组件的信息</li>
+<li><code>ref</code>属性用于获取子组件信息进行通信,在当前vue对象中使用<code>this.$refs.XXX</code>获取子组件</li>
+<li><code>@selectChange</code>自定义选择事件,当前组件选择option后触发</li>
+<li><code>StaticSelector.vue</code>中的方法,<ul>
+<li><code>resetValue</code>,重置下拉选择</li>
+<li><code>loadData</code>,执行获取服务器请求方法</li>
+</ul>
+</li>
+<li><code>DynamicSelector.vue</code>中的方法,<ul>
+<li><code>setSelectorValue</code>,重置或设置默认值</li>
+<li><code>remoteMethod</code>,对输入的值进行搜索返回渲染的方法</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="简单的分页表格"><a href="#简单的分页表格" class="headerlink" title="简单的分页表格"></a>简单的分页表格</h3><ul>
+<li><code>template</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row filter-btn"</span> <span class="attr">align</span>=<span class="string">"right"</span> <span class="attr">:test</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">basic-button</span> <span class="attr">btnType</span>=<span class="string">"Search"</span> @<span class="attr">click</span>=<span class="string">"clickSearch"</span>&gt;</span><span class="tag">&lt;/<span class="name">basic-button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">general-table</span> <span class="attr">:gridInstance</span>=<span class="string">"gridData"</span></span></span><br><span class="line"><span class="tag"> <span class="attr">ref</span>=<span class="string">"demoGrid"</span></span></span><br><span class="line"><span class="tag"> <span class="attr">:showPagingTool</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag"> @<span class="attr">selectChange</span>=<span class="string">"handleSelectionChange"</span></span></span><br><span class="line"><span class="tag"> <span class="attr">:isShowCheckBox</span>=<span class="string">"false"</span>&gt;</span><span class="tag">&lt;/<span class="name">general-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>相关的<code>script</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//data对象</span></span><br><span class="line"><span class="comment">//表格的模板列</span></span><br><span class="line">gridData: &#123;</span><br><span class="line">    columns:[&#123;</span><br><span class="line">      key: <span class="string">'id'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="keyword">this</span>.$t(<span class="string">'childSystem.commonLang.systemCode'</span>),</span><br><span class="line">      key: <span class="string">'systemCode'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="keyword">this</span>.$t(<span class="string">'childSystem.commonLang.systemName'</span>),</span><br><span class="line">      key: <span class="string">'systemName'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="keyword">this</span>.$t(<span class="string">'childSystem.tableLang.createTime'</span>),</span><br><span class="line">      key: <span class="string">'createTime'</span>,</span><br><span class="line">      render: <span class="function">(<span class="params">row, columns</span>) =&gt;</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">this</span>.dateFormatter(row,column);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//computed</span></span><br><span class="line">computed : &#123;</span><br><span class="line">  ...mapGetters([</span><br><span class="line">    <span class="string">'tablePaginationSize'</span></span><br><span class="line">  ])</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">//methods</span></span><br><span class="line">clickSearch()&#123;</span><br><span class="line">   <span class="comment">//fetch data</span></span><br><span class="line">   <span class="keyword">this</span>.$refs.demoGrid.gridDataInit(url, queryParams)</span><br><span class="line">&#125;,</span><br><span class="line">handleSelectionChange(rows)&#123;  <span class="comment">//表格选择处理</span></span><br><span class="line">  <span class="keyword">this</span>.multipleSelection = rows;</span><br><span class="line">&#125;,</span><br><span class="line">dateFormatter(row, column)&#123;</span><br><span class="line">  <span class="keyword">let</span> date = row[column.property];</span><br><span class="line">  <span class="keyword">if</span> (date) &#123;</span><br><span class="line">    <span class="keyword">return</span> utils.parseTime(date,<span class="string">'&#123;y&#125;-&#123;m&#125;-&#123;d&#125; &#123;h&#125;:&#123;i&#125;:&#123;s&#125;'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>说明</p>
+<ul>
+<li><code>basic-button</code>组件,封装了基础的按钮和国际化信息</li>
+<li><code>general-table</code>使用的是<code>iview</code>的单行数据的<code>table</code>组件和<code>page</code>分页组件<ul>
+<li><code>checkBox</code>属性,设置表格支持多选</li>
+<li><code>columns</code>属性,表格的列渲染,<code>render</code>属性,指定方法进行返回值渲染</li>
+<li><code>selectChange</code>事件,绑定当前表格<code>chekcbox</code>选择事件</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="前端国际化"><a href="#前端国际化" class="headerlink" title="前端国际化"></a>前端国际化</h3><p>页面组件,文本的信息国际化切换</p>
+<p> <a href="http://kazupon.github.io/vue-i18n/old/" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/vue--i18n-5.0x-brightgreen.svg" alt="vue-i18n"></a></p>
+<ul>
+<li><code>assets/i18n/locale.js</code>本地语言国际化信息,<code>localeNames</code>数组存放当前所有的本地国际化信息文件名称</li>
+<li>在入口文件中<code>main.js</code>合并了本地语言国际化信息和<code>iview</code>的国际化</li>
+</ul>
+<p><code>template</code>中使用<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Form-item</span> <span class="attr">:label</span>=<span class="string">"$t('childSystem.searchForm.testLayout')"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Input</span> <span class="attr">:placeholder</span>=<span class="string">"$t('childSystem.searchForm.testPlaceholder')"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Form-item</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>script</code>中使用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$Message.warning(&#123;</span><br><span class="line">    content: <span class="keyword">this</span>.$t(<span class="string">'global.chooseRow'</span>),</span><br><span class="line">    showClose: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>!&gt; <strong>注意</strong><code>locale.js</code>中语言对象的声明规则</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p><strong>font</strong></p>
+<blockquote>
+<p>项目中的有4个字体组件,ElementUI 和 iview自带的以及自定义的,以下俩个是自定义字体组件的使用</p>
+</blockquote>
+<ul>
+<li><p><a href="https://github.com/justineo/vue-awesome" target="_blank" rel="noopener">vue-awesome</a></p>
+<ul>
+<li><p>组件中使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">icon-vueSvg</span> <span class="attr">name</span>=<span class="string">"you icon name"</span>&gt;</span><span class="tag">&lt;/<span class="name">icon-vueSvg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>js注册图标</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//index.js</span></span><br><span class="line"> <span class="comment">//引入自定义注册库的js</span></span><br><span class="line"> <span class="keyword">import</span> <span class="string">'./font-basic'</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//font-basic.js</span></span><br><span class="line"> <span class="comment">//引入图标组件进行图标注册</span></span><br><span class="line"> <span class="keyword">import</span> Icon <span class="keyword">from</span> <span class="string">'./Icon'</span>;</span><br><span class="line"></span><br><span class="line"> Icon.register(&#123;</span><br><span class="line">    <span class="string">'information'</span>: &#123;</span><br><span class="line">    <span class="string">'width'</span>: <span class="number">1024</span>,</span><br><span class="line">    <span class="string">'height'</span>: <span class="number">1024</span>,</span><br><span class="line">    <span class="string">'paths'</span>: [</span><br><span class="line">        &#123;</span><br><span class="line"><span class="comment">//svg数据</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>给图标设置样式（大小可以通过 transform: scale() 来设置）<br>新建图标文件出口文件，这个在使用的图标很多的时候比较方便</p>
+</blockquote>
+<ul>
+<li><p><a href="http://iconfont.cn/" target="_blank" rel="noopener">iconfont</a></p>
+<ul>
+<li><p>使用图标库步骤:</p>
+<ul>
+<li>在当前自己的图标库中生成<code>symbol</code>引用地址</li>
+<li>定义一个自定义的<code>icon.vue</code>组件</li>
+<li><p>组件中使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">icon-fontSvg</span> <span class="attr">icon-class</span>=<span class="string">"you icon name"</span>&gt;</span><span class="tag">&lt;/<span class="name">icon-fontSvg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>项目统一使用一个项目图标库,只生成一个统一的图标库地址,不需要开发者单独去生成引用,可以使用即可</p>
+</blockquote>
+<p><strong>vue-devtools</strong></p>
+<ul>
+<li>基于chrome的vuejs开发调试工具</li>
+<li><a href="http://www.cnplugins.com/devtool/vuejs-devtools/" target="_blank" rel="noopener">下载及使用</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/开发/" rel="tag"># 开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/27/2017-07-27-Zookeeper分布式集中管理搭建/" rel="next" title="基于Zookeeper分布式应用集中配置管理">
+                <i class="fa fa-chevron-left"></i> 基于Zookeeper分布式应用集中配置管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/anime.jpg"
+                alt="Olsond" />
+            
+              <p class="site-author-name" itemprop="name">Olsond</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/olsondy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/javady" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SPA应用-？"><span class="nav-number">1.</span> <span class="nav-text">SPA应用 ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目简介"><span class="nav-number">2.</span> <span class="nav-text">项目简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容性"><span class="nav-number">3.</span> <span class="nav-text">兼容性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能"><span class="nav-number">4.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构介绍"><span class="nav-number">5.</span> <span class="nav-text">目录结构介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装及启动"><span class="nav-number">6.</span> <span class="nav-text">安装及启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">6.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地开发"><span class="nav-number">6.2.</span> <span class="nav-text">本地开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试环境"><span class="nav-number">6.3.</span> <span class="nav-text">测试环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生产环境"><span class="nav-number">6.4.</span> <span class="nav-text">生产环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关组件说明与简单例子演示"><span class="nav-number">7.</span> <span class="nav-text">相关组件说明与简单例子演示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Element-amp-iView"><span class="nav-number">7.1.</span> <span class="nav-text">Element &amp; iView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mock-js-框架的使用"><span class="nav-number">7.2.</span> <span class="nav-text">mock.js 框架的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http请求-axios框架使用"><span class="nav-number">7.3.</span> <span class="nav-text">http请求 axios框架使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vuex-状态管理"><span class="nav-number">7.4.</span> <span class="nav-text">vuex 状态管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-router-路由"><span class="nav-number">7.5.</span> <span class="nav-text">vue-router 路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布局"><span class="nav-number">7.6.</span> <span class="nav-text">布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容页"><span class="nav-number">7.7.</span> <span class="nav-text">内容页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Selector-下拉组件"><span class="nav-number">7.8.</span> <span class="nav-text">Selector 下拉组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单的分页表格"><span class="nav-number">7.9.</span> <span class="nav-text">简单的分页表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端国际化"><span class="nav-number">7.10.</span> <span class="nav-text">前端国际化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">7.11.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Olsond</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
